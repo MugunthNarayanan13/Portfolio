@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { Fugaz_One, Open_Sans } from "next/font/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+const fugaz = Fugaz_One({
+  subsets: ["latin"],
+  weight: "400"
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +28,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const footer = (
+    <footer className=" p-4 sm:p-8 grid place-items-center ">
+      <p className={" text-indigo-500 " + fugaz.className}>Created with <span className="font-bold">❤️</span> by MUGUNTH NARAYANAN</p>
+    </footer>
+  );
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {footer}
       </body>
     </html>
   );
